@@ -7,18 +7,25 @@ button.addEventListener("click", () =>{
 
 function newGridSize() {
     let number = prompt("What size would you like the grid to be? (1-100)");
+    if (number < 1){
+        alert("Invalid number, Please pick again");
+        return undefined;
+    } else if (number > 100){
+        alert("Invalid number, Please pick again");
+        return undefined;
+    } else {
     container.style.gridTemplateRows = `repeat(${number}, 1fr)`;
         container.style.gridTemplateColumns = `repeat(${number}, 1fr)`;
         createGrid(number);
 }
- 
+}
 function createGrid(size) {
     container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
     container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
 
 for (let i = 0; i < size * size; i++) {
     const div = document.createElement('div');
-    div.style.backgroundColor = "white";
+    div.style.backgroundColor = "powderblue";
     container.appendChild(div);
 
     div.addEventListener("mouseover", () => {
@@ -36,7 +43,7 @@ button2.addEventListener("click", reloadButton);
 function reloadButton() {
     const squares = document.querySelectorAll('div');
     squares.forEach(square => {
-        square.style.backgroundColor = "white"
+        square.style.backgroundColor = "powderblue";
     });
 }
 createGrid();
